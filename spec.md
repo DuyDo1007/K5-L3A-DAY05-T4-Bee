@@ -21,8 +21,6 @@
 2. **Không tự chi tiền và không tự đóng khiếu nại.** AI chỉ soạn nháp. Tiền chỉ di chuyển khi shop tự đồng ý, hoặc khi nhân viên sàn duyệt **sau khi shop đã được nghe** (đã phản hồi hoặc đã quá 48 giờ).
 3. **Không đưa số điện thoại, địa chỉ hay kênh liên lạc ngoài sàn của bên này cho bên kia.**. Lý do an toàn cho cả hai bên, và trao đổi ngoài sàn thì không còn làm bằng chứng được. Tránh việc một trong hai bên gây áp lực cho bên còn lại trong quá trình tranh chấp.
 
-*(Kiểm tra trên prototype: không có nút khoá shop ở bất kỳ góc nhìn nào; shop không có nút từ chối; thông tin liên hệ bị ẩn, xem `prototype/anh-3`.)*
-
 ## §2. Kịch bản rủi ro  (chặng 2)
 
 Nhãn mức hại: **nhẹ** / **sửa được** / **KCN** (không chấp nhận được).
@@ -122,8 +120,6 @@ Nhóm **tách `soan_hoan_tien` thành 2 bước**: `soan_hoan_tien` (chỉ soạ
 
 ### Tool khó xếp nhất: `soan_hoan_tien` của đề (“Hoàn tiền cho người mua”, tiền chuyển thật)
 
-*Đây là tool gốc trong bảng tool của track, trước khi nhóm tách. Kết quả bàn bên dưới dẫn tới việc tách nó thành `soan_hoan_tien` (nháp) và `chi_hoan_tien` như trong bảng trên.*
-
 | Người | Tự xếp trong 5 phút (trước khi bàn) | Lý do |
 |---|---|---|
 | Nguyễn Thị Hồng Hạnh | **Nhân viên phải duyệt mọi lần hoàn tiền** | Tiền đã hoàn thì gần như không lấy lại được, nên phải có người kiểm tra trước. Ví dụ đôi giày (#8): khách chỉ cần doạ bóc phốt là AI có thể hoàn tiền, và shop đúng vẫn mất 850.000đ. Ví dụ nồi chiên (#1): AI còn có thể so nhầm mô tả, tức là AI cũng đánh giá sai được. **Thà chậm một chút còn hơn mất tiền oan.** |
@@ -157,15 +153,12 @@ Nhóm **tách `soan_hoan_tien` thành 2 bước**: `soan_hoan_tien` (chỉ soạ
 Đặt `chi_hoan_tien` ở mức **cần duyệt** làm đổi lời hứa của sản phẩm. Trước đó lời hứa là **“AI xử lý hoàn tiền ngay cho bạn”**. Sau khi đổi, lời hứa thành **“AI thu bằng chứng, đối chiếu với mô tả lúc đặt cho cả hai bên cùng thấy, rồi người có thẩm quyền quyết; bạn luôn biết mình đang ở bước nào và còn bao lâu”**. Lời hứa mới được thể hiện trong banner [1], thanh trạng thái 4 bước, và câu “chưa có tiền nào được chuyển”. Người bán nhận thêm một lời hứa: **“bạn luôn được nghe trong 48 giờ trước khi có quyết định”** [8].
 
 ## §5. Prototype  (chặng 5)
-- **File:** `prototype/index.html`. Mở trực tiếp bằng trình duyệt; hướng dẫn bấm ở `prototype/README.md`.
-- **Công cụ:** HTML, CSS và JS thuần trong một file, viết cùng coding agent (Claude Code). Không backend, không đăng nhập.
+- **File:** `prototype/index.html`. Mở trực tiếp bằng trình duyệt.
+- **Công cụ:** HTML, CSS và JS thuần trong một file html,không backend,tạo bởi claude.
 - **Phần mock:** toàn bộ dữ liệu (3 đơn, 3 shop, snapshot mô tả, ảnh mô tả bằng chữ); phản hồi AI trong prototype là kịch bản dựng sẵn; bộ định tuyến ca lạ dùng từ khoá. Các nút “⏩ Tua nhanh / Mô phỏng hết 48 giờ” dùng để demo luồng thời gian.
-- **Lời gọi AI thật (bonus):** `prototype/ai/doi-chieu.mjs` gọi Claude (`claude-opus-5-5`, SDK `@anthropic-ai/sdk`) để đối chiếu khiếu nại Ca A và Ca B với **mô tả lúc đặt** và trả về mức căn cứ ở dạng JSON có schema. Kết quả hiện ở tab Nhân viên sàn. Key đọc từ biến môi trường, không có trong repo. ✏️ *Chạy script và thêm ảnh hoặc log vào `prototype/` trước khi nộp nếu muốn lấy bonus.*
-- **3 góc nhìn × 4 ca:** Người mua / Người bán / Nhân viên sàn; Ca A, Ca B, Ca thường, Ca lạ (gõ tự do).
+- **3 góc nhìn × 4 ca:** Người mua / Người bán / Nhân viên sàn; Ca A, Ca B, Ca thường, Ca lạ (tự do).
 
 ### Ảnh có đánh số
-
-`anh-1-nguoi-mua-caA.png` · `anh-2-nguoi-mua-caB.png` · `anh-3-nguoi-ban-caA.png` · `anh-4-nhan-vien-caB.png` · `anh-5-ca-la-tin-cut.png`
 
 | Số | Thể hiện gì | Nguyên tắc HAX/PAIR | Mức tự chủ | Ở ảnh |
 |---|---|---|---|---|
