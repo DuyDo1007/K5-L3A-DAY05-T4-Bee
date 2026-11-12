@@ -1,7 +1,7 @@
 # Dàn ý bài nộp *(spec.md — nộp trước 23:59 ngày lab của lớp)*
 
 # Bài nộp LAB5 — T4 · Nhóm [Bee]
-[Danh sách thành viên và việc mỗi người làm — copy bảng từ README]
+
 | Họ và Tên | Mã Học Viên | Việc đã làm |
 |---|---|---|
 | Nguyễn Thị Hồng Hạnh | 2A202603537 | **§1 Lát cắt & phạm vi**: chép lát cắt, viết 3 việc AI không làm và lý do · **§2 Kịch bản rủi ro**: bảng 11 kịch bản phủ 4 lớp và 6 hard test, chọn 2 kịch bản đắt nhất và kịch bản suýt được chọn · demo: 30 giây mở đầu |
