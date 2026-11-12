@@ -4,9 +4,11 @@
 [Danh sách thành viên và việc mỗi người làm — copy bảng từ README]
 | Họ và Tên | Mã Học Viên | Việc đã làm |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Nguyễn Thị Hồng Hạnh | ✏️ | **§1 Lát cắt & phạm vi**: chép lát cắt, viết 3 việc AI không làm và lý do · **§2 Kịch bản rủi ro**: bảng 11 kịch bản phủ 4 lớp và 6 hard test, chọn 2 kịch bản đắt nhất và kịch bản suýt được chọn · demo: 30 giây mở đầu |
+| Lê Xuân Hạ | ✏️ | **§3 Khi AI sai**: câu AI nói nguyên văn, người dùng thấy gì và làm gì tiếp, ai được báo, chọn cách xử lý, phân loại lỗi, nguyên tắc HAX/PAIR · **§4 Mức tự chủ**: cost-of-error cho 6 tool, tách `chi_hoan_tien`, tool khó xếp nhất, thử trên 3 kịch bản · demo: giải thích khi AI sai và mức tự chủ |
+| Đỗ Đắc Duy | ✏️ | **§5 Prototype**: dựng `prototype/index.html` 3 góc nhìn, 5 ảnh đánh số, lập luận cách hiển thị · **§6 Tốt là gì**: 3 tiêu chí Pass/Fail và chấm thử trên 2 kịch bản đắt nhất · demo: bấm prototype qua ca khó |
+
+> **Chính sách dựng dùng xuyên suốt bài** (khác chính sách thật của Shopee là 15 ngày): hạn yêu cầu trả hàng **7 ngày** kể từ ngày nhận · shop có **48 giờ** để phản hồi một khiếu nại · nhân viên sàn xử lý trong **24 giờ** sau khi hồ sơ vào hàng chờ, quá hạn thì tự lên trưởng nhóm. “Hôm nay” trong mọi ví dụ là **12/11/2026 14:30**.
 ## §1. Lát cắt & phạm vi
 **Lát cắt (chép từ track):** Trong **Trò chuyện với Shopee**, khi **người mua** đang báo “hàng nhận không đúng mô tả”, **AI tự hướng dẫn gửi yêu cầu trả hàng hoàn tiền, xin thêm bằng chứng, hay chuyển nhân viên**, để người mua biết đúng bước tiếp theo, và người bán không bị xử thua khi họ đúng.
 
@@ -118,18 +120,29 @@ Nhóm **tách `soan_hoan_tien` thành 2 bước**: `soan_hoan_tien` (chỉ soạ
 | `tu_choi_khieu_nai` | **Cần duyệt (nhân viên sàn)**, và **chỉ mở sau khi shop đã phản hồi hoặc quá 48 giờ** (người mua đã có cơ hội bổ sung). Màn xác nhận bắt buộc ghi **lý do gửi người mua** [9]. AI chỉ soạn đề xuất. **Shop không có nút từ chối** | Từ chối sai thì **người mua** mất tiền và giữ hàng sai (#1, #2) | **Khó**: tiền đã về người bán | Shop chờ tiền thêm vài ngày; chấp nhận được vì tiền đang được sàn giữ | *Tự làm khi “chưa đủ căn cứ”*: chính là lỗi Ca A (so nhầm bản). Phải đối xứng với hoàn tiền, nếu không thiết kế sẽ thiên về một bên |
 | `phat_shop` | **Cấm** trong luồng khiếu nại [7]. Không có nút ở bất kỳ góc nhìn nào; chỉ chuyển phản ánh (qua `chuyen_truong_nhom`) sang bộ phận Kiểm duyệt người bán | Phạt sai thì **cả shop** mất uy tín hoặc bị khoá, ảnh hưởng mọi đơn khác | Khó | Không áp dụng | *Cần duyệt*: một bước xác nhận của nhân viên CSKH không đủ để chặn. Việc này cần điều tra trên nhiều đơn, không thuộc thẩm quyền xử một đơn |
 
-### Tool khó xếp nhất: `soan_hoan_tien` (gốc, tức hoàn tiền thật)
+### Tool khó xếp nhất: `soan_hoan_tien` của đề (“Hoàn tiền cho người mua”, tiền chuyển thật)
+
+*Đây là tool gốc trong bảng tool của track, trước khi nhóm tách. Kết quả bàn bên dưới dẫn tới việc tách nó thành `soan_hoan_tien` (nháp) và `chi_hoan_tien` như trong bảng trên.*
 
 | Người | Tự xếp trong 5 phút (trước khi bàn) | Lý do |
 |---|---|---|
-| ✏️ Người 1 | ✏️ (ghi đúng kết quả bỏ phiếu thật của nhóm) | ✏️ |
-| ✏️ Người 2 | ✏️ | ✏️ |
-| ✏️ Người 3 | ✏️ | ✏️ |
+| Nguyễn Thị Hồng Hạnh | **Nhân viên phải duyệt mọi lần hoàn tiền** | Tiền đã hoàn thì gần như không lấy lại được, nên phải có người kiểm tra trước. Ví dụ đôi giày (#8): khách chỉ cần doạ bóc phốt là AI có thể hoàn tiền, và shop đúng vẫn mất 850.000đ. Ví dụ nồi chiên (#1): AI còn có thể so nhầm mô tả, tức là AI cũng đánh giá sai được. **Thà chậm một chút còn hơn mất tiền oan.** |
+| Lê Xuân Hạ | **AI tự hoàn tiền nếu lỗi đã rõ ràng** (ví dụ shop đã nhận lỗi) | Khách đã bực vì bị hỏi đi hỏi lại. Ví dụ cái áo (#9): shop đã nhận là gửi nhầm size, mà khách vẫn phải chờ nhân viên 24 giờ thì rất vô lý, khách dễ bỏ đi hoặc lên mạng chê. **Ca đã rõ thì nên làm nhanh; chỉ ca mập mờ mới cần người.** |
+| Đỗ Đắc Duy | **Tách làm 2 bước: AI soạn sẵn, người bấm chi tiền** | Hai cách trên đều có chỗ hỏng: để AI tự làm thì sai ở đôi giày, bắt nhân viên duyệt hết thì chậm ở cái áo. Chỗ nguy hiểm thật sự là **lúc tiền được chuyển đi**, không phải lúc AI soạn đề xuất, nên chỉ cần khoá đúng bước đó. Người bấm có thể là **shop** (vì shop là bên mất tiền) hoặc nhân viên. |
 
-Cái giá của mỗi phía:
-- **Tự làm** (nhanh): chặn được việc người mua phải chờ, nhưng thua ở **#8**. Người bán đúng mà vẫn mất 850.000đ chỉ vì một tin doạ. Thua cả **#1** theo chiều ngược: nếu AI so nhầm bản mô tả thì nó lại thấy “không có căn cứ”.
-- **Cần nhân viên duyệt mọi lần** (an toàn): thua ở **#9** (ca bình thường). Shop đã nhận lỗi mà người mua vẫn phải chờ nhân viên 24 giờ, nhân viên quá tải vì ca dễ.
-- **Nhóm chốt: tách 2 bước.** AI tự soạn nháp; việc chi tiền cần **người chịu tiền đồng ý** (shop) hoặc nhân viên. Cách này chặn **#8** (AI không có quyền chi nên lời doạ không thành tiền), không làm chậm **#9** (shop bấm đồng ý là xong), và giữ được bản nháp có căn cứ cho nhân viên ở **#1**.
+**Mỗi cách mất gì:**
+- **AI tự hoàn (cách của Hạ):** nhanh, nhưng
+  - đôi giày (#8): khách doạ là có tiền, shop đúng vẫn mất 850.000đ;
+  - cái áo (#9): AI thấy shop nhắn “gửi nhầm” trong chat là hoàn luôn, trong khi shop chưa bấm xác nhận và khách chưa gửi trả áo, nên shop mất cả áo lẫn tiền;
+  - nồi chiên (#1): AI có thể so nhầm mô tả, nên cái “rõ ràng” mà AI tự thấy chưa chắc đã đúng.
+- **Nhân viên duyệt hết (cách của Hạnh):** an toàn, nhưng ở cái áo (#9) shop đã nhận lỗi mà khách vẫn phải chờ 24 giờ, nhân viên thì ngập trong những ca dễ.
+
+**Nhóm chọn cách của Duy: tách 2 bước.** AI chỉ được soạn đề xuất hoàn tiền. Muốn chuyển tiền thật thì **shop phải bấm “Đồng ý”**, hoặc **nhân viên phải duyệt** (khi shop không đồng ý hoặc không trả lời trong 48 giờ).
+
+**Vì sao cả 3 người đồng ý:**
+- **Hạnh đồng ý** vì AI **không bao giờ tự chuyển tiền**. Lời doạ ở ca đôi giày không biến thành tiền, và ở ca nồi chiên nhân viên vẫn nhìn thấy cả hai bản mô tả trước khi quyết.
+- **Hạ đồng ý** vì ở ca cái áo, **shop bấm đồng ý là xong**, khách không phải chờ nhân viên.
+- **Hạ xin thêm một điều và cả nhóm đồng ý:** khi AI mới soạn đề xuất, phải nói rõ với khách **“chưa có tiền nào được chuyển”** và đang chờ ai, để khách không tưởng mình đã được hoàn tiền.
 
 ### Thử mức đã đặt trên 3 kịch bản
 
