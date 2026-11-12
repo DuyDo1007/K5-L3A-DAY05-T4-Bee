@@ -38,12 +38,18 @@ Thêm:
 - Một mức tự chủ đã đổi lời hứa nào với người dùng.
 
 ## §5. Prototype  (chặng 5)
-- Link hoặc file · công cụ · phần nào mock · có lời gọi AI thật không.
-- 1–2 ảnh có đánh số; mỗi số: thể hiện gì · nguyên tắc HAX/PAIR nào · mức tự chủ nào.
-- Quyết định: cách hiện độ chắc/bằng chứng và điều khiển mức tự chủ — đã nghĩ tới cách nào khác, vì sao chọn cách này.
+- File: [`prototype/index.html`](./prototype/index.html) · HTML/CSS/JavaScript · dữ liệu, phản hồi shop và thao tác đều mock · không có lời gọi AI thật, backend hay giao dịch thật.
+- Ca chính: mô tả sản phẩm hiện tại đã đổi sau ngày mua; prototype đặt snapshot lúc mua cạnh mô tả hiện tại và không tự kết luận bên nào sai. Ca phụ: tem sản phẩm khớp snapshot lúc mua; prototype không tự từ chối khiếu nại.
+- Chú thích trên màn hình: **(1)** snapshot lúc mua đặt cạnh trang hiện tại — HAX G11/PAIR Explainability; **(2)** phần bằng chứng còn thiếu — HAX G2; **(3)** nhãn “Chưa đủ căn cứ để kết luận” và không đoán — HAX G10; **(4)** chuyển trưởng nhóm kèm tóm tắt — PAIR Errors + Graceful Failure; **(5)** hoàn tiền chờ trưởng nhóm duyệt — Human Control.
+- Ảnh cần nộp: **Ảnh 1** chụp màn Người mua, chỉ rõ (1)(2)(3); **Ảnh 2** chụp Hồ sơ trưởng nhóm sau khi chuyển, chỉ rõ (1)(2)(4)(5). Chụp từ prototype và lưu vào `prototype/` trước khi nộp.
+- Mức tự chủ minh hoạ cho `soan_hoan_tien`: **② trưởng nhóm duyệt** là lựa chọn mẫu. Người duyệt thấy snapshot lúc mua, mô tả hiện tại và phản hồi hai bên trước khi quyết. Mức ① chỉ gợi ý; mức ③ chỉ là mô phỏng rủi ro, không thực hiện giao dịch. Cần đồng bộ lựa chọn này với §4 của nhóm.
+- Cách thể hiện độ chắc: dùng nhãn bằng lời và chỉ rõ căn cứ/điểm còn thiếu, không dùng phần trăm vì prototype không có dữ liệu hiệu chuẩn. Đã cân nhắc tự hoàn tiền để nhanh hơn nhưng loại khỏi lựa chọn mẫu vì chứng cứ mâu thuẫn và tiền đã hoàn khó lấy lại.
 
 ## §6. Tốt là gì  (chặng 6 — nhẹ, bỏ được nếu thiếu giờ)
-- 3 tiêu chí Pass/Fail chấm được; thiết kế của nhóm đạt tiêu chí nào trên 2 kịch bản đắt nhất; lỗi còn lại.
+- **Tiêu chí 1 — Đúng nguồn:** Pass nếu cả hai ca hiển thị snapshot tại thời điểm mua tách biệt với trang hiện tại; Fail nếu lấy mô tả hiện tại thay cho snapshot hoặc khẳng định bên nào sai khi chưa có căn cứ. Kết quả: **Pass** ở ca mô tả bị sửa và ca tem khớp snapshot.
+- **Tiêu chí 2 — Không tự quyết tài chính:** Pass nếu AI không tự hoàn tiền, từ chối khiếu nại hoặc phạt shop khi chưa có người duyệt; Fail nếu một trong các thao tác đó tự chạy. Kết quả: **Pass** ở cả hai ca với mức mẫu ②; mức ③ được giữ lại chỉ để minh hoạ đường rủi ro.
+- **Tiêu chí 3 — Có bước tiếp theo rõ ràng:** Pass nếu người mua có thể yêu cầu thêm bằng chứng hoặc chuyển trưởng nhóm và nhìn thấy trạng thái; Fail nếu chỉ nhận câu trả lời chung chung, không có hành động tiếp. Kết quả: **Pass** ở cả hai ca.
+- Lỗi còn lại: prototype không xác minh được ảnh, phép đo dung tích hoặc tính xác thực của phản hồi shop; các điểm này cần người xử lý xem xét trước khi ra quyết định cuối.
 
 ## §7. Demo
 - Ca lạ nhận được ở demo: prototype đã làm gì, và nhóm có đổi ý gì sau ca đó không.
