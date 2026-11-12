@@ -1,13 +1,4 @@
-
-# Dàn ý bài nộp *(spec.md — nộp trước 23:59 ngày lab của lớp)*
-
-> Copy dàn ý này vào `spec.md` của nhóm. Đây **không** phải form để điền đủ ô: mỗi mục chỉ cần đủ **bằng chứng** và **lập luận** ghi bên dưới. Viết ngắn, gạch đầu dòng là được. Hướng dẫn từng chặng: `02-guide.md`. Cách chấm: `04-rubric.md`.
->
-> **Một quyết định = bốn ý:** đã cân nhắc phương án nào · chọn phương án nào · vì sao · loại các phương án kia vì sao. Bằng chứng = lập luận trỏ về một chỗ cụ thể: tool nào, dòng dữ liệu nào của track, điều gì trong mục "Sản phẩm thật hôm nay", chỗ nào trên prototype (ảnh đánh số). Không chạy agent.
-
-
 # Bài nộp LAB5 — T4 · Nhóm [Bee]
-[Danh sách thành viên và việc mỗi người làm — copy bảng từ README]
 | Họ và Tên | Mã Học Viên | Việc đã làm |
 |---|---|---|
 |  |  |  |
@@ -16,16 +7,14 @@
 ## §1. Lát cắt & phạm vi
 **Lát cắt:** Trong **Trò chuyện với Shopee**, khi **người mua** đang báo “hàng nhận không đúng mô tả”, **AI tự hướng dẫn gửi yêu cầu trả hàng hoàn tiền, xin thêm bằng chứng, hay chuyển nhân viên**, để người mua biết đúng bước tiếp theo, và người bán không bị xử thua khi họ đúng.
 
-**AI được thêm quyền gì so với hôm nay:** hôm nay trợ lý chạy theo menu, người mua tự chọn đơn, chọn lý do, gửi bằng chứng, và người bán hay Shopee xem xét. Khi có AI, trợ lý tự đọc khiếu nại, **tự đối chiếu với mô tả** và **tự chọn bước tiếp** (xin bằng chứng, soạn đề xuất hoàn tiền, chuyển người).
+**AI được thêm quyền gì so với hôm nay:** hôm nay trợ lý chạy theo menu, người mua tự chọn đơn, chọn lý do, gửi bằng chứng, và người bán hay Shopee xem xét. Khi có AI, trợ lý tự đọc khiếu nại, **tự đối chiếu với mô tả** và **tự chọn bước tiếp** (xin bằng chứng, soạn đề xuất hoàn tiền, chuyển người xem xét).
 
 **Sai thì ai chịu:** hoàn sai thì **người bán** mất tiền và hàng; từ chối sai hoặc vòng vo thì **người mua** mất tiền và giữ hàng sai. Cả hai hướng đều khó đảo lại, vì tiền đã về một bên. Vì vậy thứ phải thiết kế là **sự trung lập**.
 
-**3 việc tính năng KHÔNG làm:**
+**3 tính năng AI KHÔNG làm:**
 1. **Không xử phạt hay khoá shop**, kể cả khi người mua nghi hàng giả. Việc này ảnh hưởng toàn bộ shop, không đảo được, và không thuộc luồng khiếu nại một đơn. Phản ánh được chuyển sang bộ phận Kiểm duyệt người bán.
 2. **Không tự chi tiền và không tự đóng khiếu nại.** AI chỉ soạn nháp. Tiền chỉ di chuyển khi shop tự đồng ý, hoặc khi nhân viên sàn duyệt **sau khi shop đã được nghe** (đã phản hồi hoặc đã quá 48 giờ).
-3. **Không đưa số điện thoại, địa chỉ hay kênh liên lạc ngoài sàn của bên này cho bên kia.** Lý do: an toàn cho cả hai bên, và trao đổi ngoài sàn thì không còn làm bằng chứng được.
-
-*(Kiểm tra trên prototype: không có nút khoá shop ở bất kỳ góc nhìn nào; shop không có nút từ chối; thông tin liên hệ bị ẩn, xem `prototype/anh-3`.)*
+3. **Không đưa số điện thoại, địa chỉ hay kênh liên lạc ngoài sàn của bên này cho bên kia.** An toàn cho cả hai bên, và trao đổi ngoài sàn thì không còn làm bằng chứng được. Tránh việc một trong hai bên gây áp lực cho bên còn lại trong quá trình tranh chấp.
 
 ## §2. Kịch bản rủi ro  (chặng 2)
 
@@ -80,7 +69,7 @@ Thêm:
 - **File:** `prototype/index.html`. Mở trực tiếp bằng trình duyệt; hướng dẫn bấm ở `prototype/README.md`.
 - **Công cụ:** HTML, CSS và JS thuần trong một file, viết cùng coding agent (Claude Code). Không backend, không đăng nhập.
 - **Phần mock:** toàn bộ dữ liệu (3 đơn, 3 shop, snapshot mô tả, ảnh mô tả bằng chữ); phản hồi AI trong prototype là kịch bản dựng sẵn; bộ định tuyến ca lạ dùng từ khoá. Các nút “⏩ Tua nhanh / Mô phỏng hết 48 giờ” dùng để demo luồng thời gian.
-- **Lời gọi AI thật (bonus):** `prototype/ai/doi-chieu.mjs` gọi Claude (`claude-opus-5-5`, SDK `@anthropic-ai/sdk`) để đối chiếu khiếu nại Ca A và Ca B với **mô tả lúc đặt** và trả về mức căn cứ ở dạng JSON có schema. Kết quả hiện ở tab Nhân viên sàn. Key đọc từ biến môi trường, không có trong repo. ✏️ *Chạy script và thêm ảnh hoặc log vào `prototype/` trước khi nộp nếu muốn lấy bonus.*
+- **Lời gọi AI thật (bonus):** `prototype/ai/doi-chieu.mjs` gọi Claude (`claude-opus-5-5`, SDK `@anthropic-ai/sdk`) để đối chiếu khiếu nại Ca A và Ca B với **mô tả lúc đặt** và trả về mức căn cứ ở dạng JSON có schema. Kết quả hiện ở tab Nhân viên sàn. Key đọc từ biến môi trường, không có trong repo.
 - **3 góc nhìn × 4 ca:** Người mua / Người bán / Nhân viên sàn; Ca A, Ca B, Ca thường, Ca lạ (gõ tự do).
 
 ### Ảnh có đánh số
@@ -131,7 +120,7 @@ Trên màn hình có đủ cả 3 mức: tự làm có hoàn tác [5], cần duy
 **Lỗi còn lại chưa sửa được:**
 - AI **không kiểm chứng được ảnh** (ảnh đo có thể dàn dựng). Thiết kế chỉ đẩy việc phán xét ảnh cho người (shop phản hồi, nhân viên quyết), chưa có công cụ phát hiện ảnh sửa.
 - Nếu **nhân viên cũng quá hạn** vào giờ cao điểm thì hồ sơ lên trưởng nhóm. Tổng thời gian chờ của người mua có thể lên khoảng 72 giờ hoặc hơn, và chưa có bồi thường cho việc chờ.
-- Snapshot chỉ đáng tin nếu được lưu ở **mọi** đơn. Đơn tạo trước khi có tính năng thì không có snapshot; với những đơn này AI phải gắn nhãn “Chưa đối chiếu được” và chuyển nhân viên.
+- Snapshot chỉ đáng tin nếu được lưu ở mọi đơn. Đơn tạo trước khi có tính năng thì không có snapshot; với những đơn này AI phải gắn nhãn “Chưa đối chiếu được” và chuyển nhân viên.
 - Trong prototype, ca lạ dùng định tuyến bằng từ khoá. Câu có cấu trúc lạ có thể rơi vào nhánh “không hiểu”, nhưng sau 2 lần thì vẫn có đường lui là tự chuyển trưởng nhóm.
 
 
