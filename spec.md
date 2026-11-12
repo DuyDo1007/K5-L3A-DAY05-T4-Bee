@@ -4,9 +4,9 @@
 [Danh sách thành viên và việc mỗi người làm — copy bảng từ README]
 | Họ và Tên | Mã Học Viên | Việc đã làm |
 |---|---|---|
-| Nguyễn Thị Hồng Hạnh | ✏️ | **§1 Lát cắt & phạm vi**: chép lát cắt, viết 3 việc AI không làm và lý do · **§2 Kịch bản rủi ro**: bảng 11 kịch bản phủ 4 lớp và 6 hard test, chọn 2 kịch bản đắt nhất và kịch bản suýt được chọn · demo: 30 giây mở đầu |
-| Lê Xuân Hạ | ✏️ | **§3 Khi AI sai**: câu AI nói nguyên văn, người dùng thấy gì và làm gì tiếp, ai được báo, chọn cách xử lý, phân loại lỗi, nguyên tắc HAX/PAIR · **§4 Mức tự chủ**: cost-of-error cho 6 tool, tách `chi_hoan_tien`, tool khó xếp nhất, thử trên 3 kịch bản · demo: giải thích khi AI sai và mức tự chủ |
-| Đỗ Đắc Duy | ✏️ | **§5 Prototype**: dựng `prototype/index.html` 3 góc nhìn, 5 ảnh đánh số, lập luận cách hiển thị · **§6 Tốt là gì**: 3 tiêu chí Pass/Fail và chấm thử trên 2 kịch bản đắt nhất · demo: bấm prototype qua ca khó |
+| Nguyễn Thị Hồng Hạnh | 2A202603537 | **§1 Lát cắt & phạm vi**: chép lát cắt, viết 3 việc AI không làm và lý do · **§2 Kịch bản rủi ro**: bảng 11 kịch bản phủ 4 lớp và 6 hard test, chọn 2 kịch bản đắt nhất và kịch bản suýt được chọn · demo: 30 giây mở đầu |
+| Lê Xuân Hạ | 2A202603571 | **§3 Khi AI sai**: câu AI nói nguyên văn, người dùng thấy gì và làm gì tiếp, ai được báo, chọn cách xử lý, phân loại lỗi, nguyên tắc HAX/PAIR · **§4 Mức tự chủ**: cost-of-error cho 6 tool, tách `chi_hoan_tien`, tool khó xếp nhất, thử trên 3 kịch bản · demo: giải thích khi AI sai và mức tự chủ |
+| Đỗ Đắc Duy | 2A202603604 | **§5 Prototype**: dựng `prototype/index.html` 3 góc nhìn, 5 ảnh đánh số, lập luận cách hiển thị · **§6 Tốt là gì**: 3 tiêu chí Pass/Fail và chấm thử trên 2 kịch bản đắt nhất · demo: bấm prototype qua ca khó |
 
 > **Chính sách dựng dùng xuyên suốt bài** (khác chính sách thật của Shopee là 15 ngày): hạn yêu cầu trả hàng **7 ngày** kể từ ngày nhận · shop có **48 giờ** để phản hồi một khiếu nại · nhân viên sàn xử lý trong **24 giờ** sau khi hồ sơ vào hàng chờ, quá hạn thì tự lên trưởng nhóm. “Hôm nay” trong mọi ví dụ là **12/11/2026 14:30**.
 ## §1. Lát cắt & phạm vi
